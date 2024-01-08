@@ -1,0 +1,36 @@
+// @mixin 是 Sass 中的一个关键字，用于创建可重用的 CSS 样式规则。
+// 定义一个名为container的mixin，可以在多个地方复用
+@mixin container {
+  // 设置背景颜色为--white变量定义的颜色
+  background-color: var(--white);
+  // 设置边框为--border-in-light变量定义的样式
+  border: var(--border-in-light);
+  // 设置边框圆角为15px
+  border-radius: 15px;
+  // 设置阴影为--shadow变量定义的样式
+  box-shadow: var(--shadow);
+  // 设置文本颜色为--black变量定义的颜色
+  color: var(--black);
+  // 设置最小宽度为600px
+  min-width: 600px;
+  // 设置最小高度为480px
+  min-height: 480px;
+  // 设置最大宽度为1200px
+  max-width: 1200px;
+
+  // 设置布局为弹性盒模型
+  display: flex;
+  // 设置超出部分隐藏
+  overflow: hidden;
+  // 设置盒子模型为border-box，边框和内边距的值包含在width内
+  box-sizing: border-box;
+
+  // 设置宽度为--window-width变量定义的宽度
+  width: var(--window-width);
+  // 设置高度为--window-height变量定义的高度
+  height: var(--window-height);
+}
+// 创建一个名为container的CSS类，并包含上面定义的mixin中的所有样式
+.container {
+  @include container();
+}

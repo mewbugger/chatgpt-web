@@ -1,0 +1,17 @@
+.container {
+  background-color: var(--white);
+  border: var(--border-in-light);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  color: var(--black);
+  min-width: 600px;
+  min-height: 480px;
+  max-width: 1200px;
+  display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: var(--window-width);
+  height: var(--window-height);
+}
+
+/*# sourceMappingURL=home.module.css.map */
