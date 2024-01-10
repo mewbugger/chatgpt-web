@@ -1,0 +1,9 @@
+.role {
+  top: 0;
+  width: var(--window-content-width) + 60px;
+  height: var(--full-height);
+  position: relative;
+  background-color: #9370DB;
+  color: #999;
+  display: flex;
+}
