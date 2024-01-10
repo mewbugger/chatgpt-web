@@ -1,10 +1,11 @@
-export interface DialogType {
+import {GptVersion} from "@/app/constants";
+export interface Dialog {
     // 头像
     avatar: string;
     // 对话ID
-    dialogId: number;
+    //dialogId: number;
     // 是否阅读
-    read: boolean;
+    //read: boolean;
     // 小标题
     subTitle: string;
     // 对话最后时间
@@ -21,12 +22,14 @@ export interface Message {
     message_type: MessageType;
     time: number;
     direction?: MessageDirection;
-    // role: MessageRole;
-    // id: string;
-    // streaming?: boolean;
+    role: MessageRole;
+    //id: string;
+    streaming?: boolean;
 }
 
-
+export interface SessionConfig {
+    gptVersion: GptVersion;
+}
 export enum MessageRole {
     system = "system",
     user = "user",
