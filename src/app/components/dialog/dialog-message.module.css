@@ -1,0 +1,63 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+
+.header {
+  line-height: 60px;
+  border-bottom: 1px solid #F5F5F5;
+  color: #333;
+  font-weight: 500;
+  padding: 0 24px;
+}
+
+.scroll {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+}
+
+.clear-context {
+  margin: 20px 0 0 0;
+  padding: 4px 0;
+  border-top: var(--border-in-light);
+  border-bottom: var(--border-in-light);
+  box-shadow: var(--card-shadow) inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+  transition: all ease 0.3s;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  font-size: 12px;
+  animation: slide-in ease 0.3s;
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 0, 0), rgba(0, 0, 0, 0));
+}
+.clear-context-tips {
+  transform: translateY(0);
+  position: relative;
+  transition: all ease 0.3s;
+  opacity: 1;
+  opacity: 0.5;
+}
+.clear-context-revert-btn {
+  transform: translateY(-50%);
+  position: absolute;
+  transition: all ease 0.1s;
+  opacity: 0;
+}
+.clear-context:hover {
+  opacity: 1;
+}
+.clear-context:hover .clear-context-revert-btn {
+  transform: translateY(0);
+  position: relative;
+  transition: all ease 0.3s;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=dialog-message.module.css.map */
