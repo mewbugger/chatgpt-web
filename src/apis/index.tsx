@@ -1,3 +1,6 @@
+import {MessageRole} from "@/types/chat";
+import {GptVersion} from "@/app/constants";
+
 const host = 'https://console-mock.apipost.cn/mock/072fa474-ab36-4650-a798-a57e8223e6e6'
 
 export const getRoleList = () => {
@@ -6,10 +9,39 @@ export const getRoleList = () => {
     //     res.json()
     // );
 
-    console.log(111111)
     // 从本地 json 文件获取
     return fetch('/prompts.json').then((res) =>
         res.json()
     );
 }
 
+// export const completions = (data: {
+//     messages: { content: string; role: MessageRole }[],
+//     model: GptVersion
+// }) => {
+//     return fetch('http://localhost:8090/api/v1/chat/completions', {
+//         method: 'post',
+//         headers: {
+//             // bcwly 后续用于写入 token 加密信息
+//             Authorization: "bcwly",
+//             'Content-Type': 'application/json;charset=utf-8',
+//         },
+//         body: JSON.stringify(data)
+//     })
+// }
+
+export const completions = (data: {
+    messages: { content: string; role: MessageRole }[],
+    model: GptVersion
+}) => {
+    // 发出请求，返回一个 Response 对象
+    return fetch('http://localhost:8090/api/v1/chat/completions', {
+        method: 'post',
+        headers: {
+            // bcwly 后续用于写入 token 加密信息
+            Authorization: "bcwly",
+            'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(data)
+    })
+}
