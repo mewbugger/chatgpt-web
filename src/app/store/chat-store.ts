@@ -4,6 +4,7 @@ import {Dialog, Message, MessageDirection, MessageRole, MessageType, SessionConf
 import {GptVersion} from "@/app/constants";
 import {nanoid} from "nanoid";
 import {completions} from "@/apis";
+import {useAccessStore} from "@/app/store/access";
 
 interface ChatStore {
     id: number;
@@ -80,7 +81,7 @@ export function createNewMessage(value: string, role?: MessageRole) {
         time: Date.now(),
         role: role || MessageRole.user,
         id: nanoid(),
-        streaming: true,
+        streaming: false,
     } as Message;
 }
 
@@ -193,6 +194,13 @@ export const userChatStore = create<ChatStore>()(
 
                             controller.enqueue(value);
                             const text = decoder.decode(value);
+
+                            // 权限校验
+                            if (text === "0003") {
+                                controller.close();
+                                useAccessStore.getState().goToLogin();
+                            }
+
                             botMessage.content += text;
                             get().updateCurrentSession((session) => {
                                 session.messages = session.messages.concat();
@@ -204,7 +212,6 @@ export const userChatStore = create<ChatStore>()(
                     },
                 });
             },
-
 
             // 更新当前会话
             updateCurrentSession(updater) {
@@ -244,3 +251,4 @@ export const userChatStore = create<ChatStore>()(
         }
     ),
 );
+
