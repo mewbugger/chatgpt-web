@@ -6,16 +6,19 @@ const host = 'http://localhost:8090'
 
 
 /**
- * Header 信息
+ * 获取Header 信息
  */
 function getHeaders() {
+    // 从useAccessStore中获取当前的访问状态
     const accessState = useAccessStore.getState()
-
+    // 定义请求头，包括授权令牌和内容类型
     const headers =  {
+        // 设置授权令牌
         Authorization:  accessState.token,
+        // 设置内容类型为 JSON
         'Content-Type': 'application/json;charset=utf-8'
     }
-
+    // 返回构造的请求头
     return headers
 }
 
@@ -25,7 +28,7 @@ export const getRoleList = () => {
     //     res.json()
     // );
 
-    // 从本地 json 文件获取
+    // 实际使用的代码是从本地的 JSON 文件获取数据
     return fetch('/prompts.json').then((res) =>
         res.json()
     );
@@ -53,6 +56,7 @@ export const completions = (data: {
  * @param token
  */
 export const login = (token: string) => {
+    // 从 useAccessStore 获取当前的访问状态
     const accessState = useAccessStore.getState()
     return fetch(`${host}/api/v1/auth/login`, {
         method: 'post',
