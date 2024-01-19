@@ -4,9 +4,20 @@ import styles from "./auth.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useAccessStore } from "../../store/access";
 import ChatGPTIcon from "../../icons/chatgpt.svg";
+// 定义Auth组件
 export function Auth() {
+    // 使用useNavigate钩子获取导航函数
+    // useNavigate钩子函数运行用户在应用的任何位置编程式地进行页面跳转
     const navigate = useNavigate();
+    // 获取自定义状态存储中的状态和方法
+    /**
+     * useAccessStore的结构
+     * token: "",
+     * accessCode: "",
+     * accessCodeErrorMsgs: "",
+     */
     const access = useAccessStore();
+    // 渲染组件
     return (
         <div className={styles["auth-page"]}>
             <ChatGPTIcon/>
@@ -17,7 +28,7 @@ export function Auth() {
             <img
                 src="/role/qrcode.jpg"
                 style={{ width: 250 }}
-            />
+            />{/* 显示二维码图片 */}
             <div className={styles["auth-tips"]}>
                 扫码关注公众号【妄言妄语】，
                 <a
@@ -25,7 +36,7 @@ export function Auth() {
                     target="_blank"
                 >
                     回复【403】获取访问密码
-                </a>
+                </a>{/* 提供获取访问密码的信息 */}
             </div>
 
             <Input
