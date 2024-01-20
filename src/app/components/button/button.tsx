@@ -9,11 +9,17 @@ import styles from "./button.module.scss";
  * @param props.text 图标说明
  * */
 export function IconButton(props: {
+    // 可选 点击事件的回调函数
     onClick?: () => void;
+    // 可选 表示按钮的图标
     icon?: JSX.Element;
+    // 可选 自定义CSS类名
     className?: string;
+    // 可选 按钮的标题
     title?: string;
+    // 可选 按钮的文字说明
     text?: string;
+    // 可选 按钮的背景颜色
     backgroundColor?: string;
 }) {
     // 从props中解构出backgroundColor属性
