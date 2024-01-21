@@ -13,27 +13,37 @@ interface Props {
 
 /**
  * 聊天面板
+ * 定义DialogMessage组件
  * @constructor
  */
 export function DialogMessage() {
+    // 获取URL参数中的id
     const {id} = useParams();
+    // 从聊天状态存储中获取状态和方法
     const chatStore = userChatStore();
+    // 获取当前聊天会话
     const currentSession = chatStore.currentSession();
+    // 获取当前页面的location对象
     const location = useLocation();
+    // 使用自定义钩子来处理滚动到底部的逻辑
     const {scrollRef, setAutoScroll, scrollToBottom} = userScrollToBottom();
+    // 获取会话标题，如果没有则默认为“新的对话”
     const title = location.state?.title || "新的对话";
 
-    // 输入事件
+    // 定义消息输入事件处理函数
     const onEnter = async (value: string) => {
+        // 创建新消息并发送
         const newMessage = createNewMessage(value, MessageRole.user)
         await chatStore.onSendMessage(newMessage);
     }
 
+    // 获取当前会话中清除上下文的索引
     const clearContextIndex =
         (currentSession.clearContextIndex ?? -1) >= 0
             ? currentSession.clearContextIndex!
             : -1;
 
+    // 渲染对话面板
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>{title}</div>
