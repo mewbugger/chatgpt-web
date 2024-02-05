@@ -8,6 +8,7 @@ import { Path } from "@/app/constants";
 import { useAppConfig } from "../../store/config";
 import { RoleDetail } from "@/app/components/role/role-detail";
 import { useAccessStore } from "@/app/store/access";
+import {Sale} from "@/app/pages/sale/sale";
 
 const Chat = dynamic(async () => (await import("../chat/chat")).Chat);
 const Role = dynamic(async () => (await import("../role/role")).Role);
@@ -54,6 +55,7 @@ function Screen() {
                             <Route path={Path.Role} element={<Role />}>
                                 <Route path=":id" element={<RoleDetail />} />
                             </Route>
+                            <Route path={Path.Sale} element={<Sale/>}/>
                         </Routes>
                     </div>
                 </>
