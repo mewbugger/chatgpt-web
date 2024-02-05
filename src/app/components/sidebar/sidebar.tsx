@@ -6,6 +6,9 @@ import RoleIcon from "../../icons/role.svg";
 import ExitIcon from "../../icons/exit.svg";
 import MinIcon from "../../icons/min.svg";
 import MaxIcon from "../../icons/max.svg";
+import SaleIcon from "../../icons/sale.svg";
+import {useAccessStore} from "@/app/store/access";
+
 
 
 import {Path} from "../../constants";
@@ -25,7 +28,8 @@ export function SideBar() {
             <div className={styles["action-button"]}>
                 {/* 第一个IconButton用于展示退出图标 */}
                 <IconButton icon={<ExitIcon/>} backgroundColor={"#ff4e4e"} onClick={() => {
-                    alert("尚未实现");
+                    const accessState = useAccessStore.getState()
+                    accessState.goToLogin()
                 }}/>
                 {/* 第二个IconButton用于最小化操作 */}
                 <IconButton icon={<MinIcon/>} backgroundColor={"#f3c910"} onClick={() => {
@@ -58,6 +62,13 @@ export function SideBar() {
                  }}>
                 <RoleIcon style={{ width: '25px', height: '25px' }}/>
             </div>
+            <div className={styles["sidebar-mall"]}
+                 onClick={() => {
+                     navigate(Path.Sale)
+                 }}>
+                <SaleIcon style={{ width: '25px', height: '25px' }}/>
+            </div>
+
 
         </div>
     )
